@@ -1,0 +1,100 @@
+Atlantean	T1	Pollywog	15	15	350	7	80	Magic	Swift
+Atlantean	T1U	Devilfish	80	95	100	35	1120	Magic	Swift	Adapt (into Seraphin)
+Atlantean	T1U	Seraphin	80	95	350	54	610	Magic	Swift	Adapt (into Devilfish)
+Atlantean	T2	Angler	40	40	100	20	460	Pierce	Fortified	Junior Fisherman
+Atlantean	T2U	Bounty Hunter	125	165	100	73	1700	Pierce	Fortified	Commercial Fisherman
+Atlantean	T2UU	Kingpin	250	415	100	143	4400	Pierce	Fortified	Elite Fisherman	Big Game Hunter
+Atlantean	T3	Sea Serpent	90	90	100	67	570	Pierce	Swift	Ambush
+Atlantean	T3U	Deepcoiler	185	275	100	206	1760	Pierce	Swift	Ambush
+Atlantean	T4	Grarl	145	145	100	57	1400	Impact	Natural	Delicacy
+Atlantean	T4U	Ocean Templar	250	395	450	140	2200	Magic	Natural	Resonance
+Atlantean	T4U	King Claw	275	420	100	102	4350	Impact	Natural	Shell Shock	Delicacy
+Atlantean	T5	Priestess of the Abyss	190	190	600	23	950	Magic	Arcane	Burst Attack	Invigorate
+Atlantean	T5U	Azeria	350	540	600	62	3200	Magic	Arcane	Invigorate	Echostrike
+Atlantean	T6	Eggsack	275	275	100	0	2200	Impact	Natural	Incubation	Azurite Shell
+Atlantean	T6U	Hydra		420	100	92	2610	Impact	Natural	Hydralings	Ancient Power
+Divine	T1	Chained Fist	20	20	100	6	200	Impact	Fortified	Unchained Rage
+Divine	T1U	Oathbreaker	75	95	100	27	1150	Impact	Fortified	Unchained Rage
+Divine	T2	Golden Buckler	50	50	100	17	570	Impact	Natural	Deflection
+Divine	T2U	Royal Guard	135	185	100	61	2080	Impact	Natural	Deflection
+Divine	T3	Sacred Steed	80	80	100	28	760	Magic	Arcane	Mana Blessing
+Divine	T3U	Pegasus	190	270	100	93	2550	Magic	Arcane	Mana Miracle
+Divine	T4	Elite Archer	145	145	450	24	900	Pierce	Arcane	Multishot
+Divine	T4U	Trinity Archer	265	410	450	55	2530	Pierce	Arcane	Hypershot
+Element	T1	Proton	20	20	300	8	150	Pure	Immaterial	Generator	Ionic Force
+Element	T1U	Atom	70	90	300	38	780	Pure	Immaterial	Generator	Ionic Force
+Element	T2	Aqua Spirit	50	50	400	18	380	Pierce	Arcane	Water Bounce
+Element	T2U	Rogue Wave	115	165	400	35	1150	Pierce	Arcane	Delusion
+Element	T2U	Fire Elemental	140	190	400	25	1350	Pierce	Arcane	Combustion
+Element	T3	Windhawk	85	85	100	45	760	Impact	Natural
+Element	T3U	Violet	180	265	100	66	2300	Impact	Natural	Lightning Strike
+Element	T4	Mudman	140	140	100	41	1680	Impact	Fortified	Harden
+Element	T4U	Golem	265	405	100	115	4750	Impact	Fortified	Harden
+Element	T5	Disciple	195	195	500	65	1200	Pierce	Swift	Mana Burst	Intellect
+Element	T5U	Starcaller	335	530	500	161	2960	Pierce	Swift	Amplify Magic	Asteroid
+Element	T6	Fire Lord	275	275	200	141	1820	Magic	Swift	Molten Shield	Overheat
+Element	T6U	Fenix	430	705	200	311	4300	Magic	Swift	Prismatic Shield	Overheat
+Forsaken	T1	Bone Warrior	15	15	100	5	110	Impact	Swift	Skeletal Regeneration
+Forsaken	T1U	Fire Archer	65	80	550	25	460	Pierce	Swift	Flaming Arrows	Skeletal Regeneration
+Forsaken	T1U	Dark Mage	80	95	400	34	500	Magic	Swift	Mindwarp	Skeletal Regeneration
+Forsaken	T1U	Bone Crusher	95	110	100	37	1140	Impact	Fortified	Skeletal Regeneration
+Forsaken	T2	Gargoyle	40	40	100	17	290	Magic	Arcane	Stone Skin
+Forsaken	T2U	Green Devil	120	160	100	66	900	Magic	Arcane	Granite Skin
+Forsaken	T3	Gateguard	100	100	100	28	620	Impact	Fortified	Summon Hound
+Forsaken	T3U	Harbinger	190	290	100	81	1770	Impact	Fortified	Summon Cerberus
+Forsaken	T4	Butcher	150	150	100	43	1230	Impact	Natural	Leech
+Forsaken	T4U	Head Chef	265	415	100	118	3400	Impact	Natural	Cannibalism
+Forsaken	T5	Nightmare	185	185	100	125	1080	Pierce	Swift
+Forsaken	T5U	Doppelganger	340	525	100	250	3300	Pierce	Swift	Fatality
+Forsaken	T6	Lord Of Death	265	265	500	63	1240	Magic	Arcane	Conjure Dragon	Intellect
+Forsaken	T6U	Hades	410	675	500	160	3150	Magic	Arcane	Raise Imp	Necromancy
+Grove	T1	Buzz	20	20	100	9	150	Pierce	Natural	Anaphylaxis
+Grove	T1U	Consort	85	105	100	53	900	Pierce	Natural	Paraphylaxis
+Grove	T2	Ranger	55	55	700	28	330	Pierce	Swift	Accuracy
+Grove	T2U	Daphne	125	180	700	89	1050	Pierce	Swift	Precision	Mark Target
+Grove	T3	Wileshroom	95	95	100	45	1740	Impact	Arcane	Cell Regrowth
+Grove	T3U	Canopie	180	275	100	130	4400	Impact	Arcane	Cell Regrowth
+Grove	T4	Honeyflower	130	130	100	1	1250	Magic	Natural	Fragrance
+Grove	T4U	Deathcap	265	395	100	1	3500	Magic	Natural	Noxious Scent
+Grove	T5	Antler	200	200	100	69	2350	Impact	Natural	Thick Hide
+Grove	T5U	Whitemane	355	555	100	133	4300	Impact	Natural
+Grove	T6	Banana Bunk	280	280	200	96	3000	Pierce	Fortified	Barbs
+Grove	T6U	Banana Haven	420	700	200	71	6650	Pierce	Fortified	Thorns	Tribal Warfare
+Mech	T1	Peewee	25	25	100	8	260	Pierce	Arcane	Booster
+Mech	T1U	Veteran	90	115	100	40	1420	Pierce	Arcane	Stimpack
+Mech	T2	Bazooka	45	45	600	23	320	Impact	Swift
+Mech	T2U	Zeus	130	175	800	47	950	Impact	Swift	Power Surge	Magnetic Accelerator
+Mech	T2U	Pyro	175	220	300	46	1700	Magic	Fortified	Pyromancy
+Mech	T3	Tempest	90	90	300	33	780	Pierce	Fortified	Machine Gunner
+Mech	T3U	Leviathan	190	280	300	65	1900	Pierce	Fortified	Aerial Command	Bombardier
+Mech	T4	APS	150	150	400	57	900	Pierce	Fortified	Energize
+Mech	T4U	MPS	250	400	400	142	2300	Pierce	Fortified	Mythium Core
+Mech	T5	Berserker	190	190	100	41	2150	Pierce	Swift	Brawler
+Mech	T5U	Fatalizer	355	545	100	119	6280	Pierce	Swift	Duelist
+Mech	T6	Millennium	290	290	550	143	2270	Impact	Arcane	Explosive Shells
+Mech	T6U	Doomsday Machine	425	715	550	352	5600	Impact	Arcane	Detonation
+Nomad	T1	Looter	10	10	100	5	80	Impact	Swift
+Nomad	T1U	Pack Rat	65	75	100	44	600	Impact	Swift	Treasure Hunt
+Nomad	T2	Harpy	35	35	450	19	240	Pierce	Natural	Acrobatics
+Nomad	T2U	Sky Queen	165	200	450	72	1350	Pierce	Natural	Acrobatics	Crimson Claws
+Nomad	T3	Warg	85	85	100	34	990	Pierce	Natural
+Nomad	T3U	Lioness	175	260	100	108	2360	Pierce	Natural	Entourage
+Nomad	T3U	Alpha Male	200	285	100	114	3400	Pierce	Natural	Dominion
+Nomad	T4	Desert Pilgrim	135	135	350	50	870	Magic	Fortified	Chain Heal
+Nomad	T4U	Lost Chieftain	255	390	350	143	2500	Magic	Fortified	Gaia Shield
+Nomad	T5	Sand Badger	195	195	100	58	2520	Impact	Arcane
+Nomad	T5U	Iron Scales	335	530	100	158	6800	Impact	Arcane
+Nomad	T6	Great Boar	270	270	100	63	3250	Pierce	Fortified	Stampede
+Nomad	T6U	Red Eyes	420	690	100	161	8300	Pierce	Fortified	Thunderous Charge
+Shrine	T1	Masked Spirit	25	25	600	7	160	Pierce	Swift	Spectral Scream
+Shrine	T1U	False Maiden	70	95	600	26	670	Pierce	Swift	Spectral Scream
+Shrine	T1UU	Hell Raiser	120	215	600	52	1500	Pierce	Swift	Tantrum	Spectral Scream
+Shrine	T2	Nekomata	60	60	100	29	640	Pierce	Arcane	Spirit Offering
+Shrine	T3	Infiltrator	80	80	100	40	740	Magic	Swift	Arm With Shuriken
+Shrine	T3U	Orchid	200	280	100	140	2600	Magic	Swift	Shuriken Cyclone
+Shrine	T4	Eternal Wanderer	125	125	100	31	790	Impact	Fortified	Shallow Grave
+Shrine	T4U	Samurai Soul	275	400	100	98	2500	Impact	Fortified	Shallow Grave
+Shrine	T5	Yozora	190	190	100	58	1470	Pure	Swift	Wintry Touch
+Shrine	T5U	Arctaire	360	550	100	164	4180	Pure	Swift	Frozen Veil
+Shrine	T6	Soul Gate	260	260	100	0	2000	Impact	Natural	Dimensional Rift	Blood Price
+Shrine	T6U	Hell Gate	420	680	100	0	5000	Impact	Natural	Dimensional Chasm	Blood Price

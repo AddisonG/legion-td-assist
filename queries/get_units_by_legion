@@ -1,0 +1,41 @@
+query {{
+    filteredUnits(legion: {}) {{
+        units {{
+            id
+            name
+            legion
+            description
+            tooltip
+            iconPath
+            armorType
+            attackType
+            attackSpeed
+            range
+            attackMode
+            moveSpeed
+            moveSpeedDescription
+            moveType
+            upgradesTo
+            goldCost
+            mythiumCost
+            totalValue
+            dps
+            hp
+            mana
+            income
+            bounty
+            abilities {{
+                id
+                name
+                description
+                tooltip
+                iconPath
+                aoe
+                bounces
+                cooldown
+                damage
+                duration
+            }}
+        }}
+    }}
+}}
