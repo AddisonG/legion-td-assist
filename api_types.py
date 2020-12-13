@@ -19,6 +19,9 @@ class Ability():
     def __repr__(self):
         return f"Ability<{self.name}>"
 
+    def __hash__(self):
+        return hash(self.id)
+
 
 @dataclass
 class Unit():
@@ -49,3 +52,6 @@ class Unit():
 
     def __repr__(self):
         return f"Unit<{self.name}>"
+
+    def __hash__(self):
+        return hash(self.id)

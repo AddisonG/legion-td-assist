@@ -13,8 +13,10 @@ VISUALIZE = False
 
 class Box():
     """
-    X = Width
-    Y = Height
+    These boxes will almost always be 24x24 - the size of the icons in LTD2.
+
+    X = Width = Left/Right.
+    Y = Height = Up/Down.
     """
     def __init__(self, x_offset, y_offset, x_size, y_size):
         self.x_offset = x_offset
@@ -22,8 +24,15 @@ class Box():
         self.x_size = x_size
         self.y_size = y_size
 
+    def __repr__(self):
+        return f"Box<({self.x_offset},{self.y_offset})>"
+
 
 def search_screenshot():
+    """
+    Takes a screenshot, and searches it for any instances of LTD2 units.
+    The positions of each unit are logged
+    """
     # Take screenshot, save it, and load it into cv2
     screenshot = pyscreenshot.grab()
 
@@ -37,34 +46,43 @@ def search_screenshot():
     # Fetch data for all units using API
     units = api.get_all_units()
 
+    unit_locations = {}
+
     for unit in units:
-        print(unit)
         if not os.path.isfile(unit.iconPath):
             print(f"Can't open file {unit.iconPath}.")
             continue
+        print(unit)
+
         needle = simplify_image(cv2.imread(unit.iconPath))
 
         matches = find(needle, haystack)
 
-        for match in matches:
-            cv2.rectangle(
-                original_image,
-                (match.x_offset, match.y_offset),
-                (match.x_offset + match.x_size, match.y_offset + match.y_size),
-                (0, 0, 255),
-                2,
-            )
+        if matches:
+            unit_locations[unit] = matches
+
+        # Draw rectangle around each match
+        # for match in matches:
+        #     cv2.rectangle(
+        #         original_image,
+        #         (match.x_offset, match.y_offset),
+        #         (match.x_offset + match.x_size, match.y_offset + match.y_size),
+        #         (0, 0, 255),
+        #         2,
+        #     )
 
     cv2.imshow("SEARCH COMPLETE", original_image)
     cv2.waitKey(100000)
+
+    return unit_locations
 
 
 def simplify_image(image):
     """
     Converts the given image to greyscale, then converts to outline only.
     """
-    conversion = cv2.COLOR_BGR2GRAY  # Returns 92-93% certainty
-    # conversion = cv2.IMREAD_GRAYSCALE  # Returns 88-90% certainty
+    conversion = cv2.COLOR_BGR2GRAY  # Returns 67-90% certainty
+    # conversion = cv2.IMREAD_GRAYSCALE  # Returns 65-85% certainty
 
     # Convert to greyscale
     greyed_image = cv2.cvtColor(image, conversion)
@@ -77,7 +95,7 @@ def simplify_image(image):
 
 # Loosely based off the code from:
 # https://www.pyimagesearch.com/2015/01/26/multi-scale-template-matching-using-python-opencv/
-def find(needle, haystack, threshold=0.65):
+def find(needle, haystack, threshold=0.6):
     matches = []
     (tH, tW) = needle.shape[:2]
 
@@ -119,8 +137,7 @@ def find(needle, haystack, threshold=0.65):
 
 
 if __name__ == "__main__":
-    # if (len(sys.argv) < 2):
-    #     print("Takes two args - needle and haystack.")
-    #     exit(1)
-    search_screenshot()
-    # find(sys.argv[1], sys.argv[2])
+    if (len(sys.argv) > 1 and sys.argv[1] in ("-h", "--help")):
+        print("This program find instances of LTD2 units on the users' screen.")
+        exit(0)
+    print(search_screenshot())
