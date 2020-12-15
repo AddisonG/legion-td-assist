@@ -1,10 +1,13 @@
 #!/usr/bin/env python3
 
+import time
 import sys
 import os
 import keyboard
 import cv2
 import pyscreenshot
+
+from multiprocessing.pool import ThreadPool
 
 from typing import List
 
@@ -32,9 +35,19 @@ def application():
         original, simple = take_screenshot()
 
         # Make a thread for each unit - search for each one
-        matches = []
+        pool = ThreadPool(processes=8)
+        async_results = []
         for unit in units:
-            matches += search_image_for_unit(simple, unit)
+            print(f"Started thread for unit {unit}.")
+            async_result = pool.apply_async(search_image_for_unit, (simple, unit))
+            async_results.append(async_result)
+
+        matches = {}
+        for unit, async_result in zip(units, async_results):
+            print("Resolved thread.")
+            result = async_result.get()
+            if len(result) > 0:
+                matches[unit] = result
 
         # Debug only
         # show_matches(original, matches)
@@ -98,4 +111,6 @@ if __name__ == "__main__":
     if (len(sys.argv) > 1 and sys.argv[1] in ("-h", "--help")):
         print("This program find instances of LTD2 units on the users' screen.")
         exit(0)
+    start = time.time()
     application()
+    print(f"Duration: {time.time() - start}")
