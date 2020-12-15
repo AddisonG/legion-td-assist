@@ -29,6 +29,10 @@ def get_all_units():
     for legion in legions:
         data = query_api(query.format(legion))
         for unit in data["data"]["filteredUnits"]["units"]:
+            if unit["goldCost"] is None:
+                # Exclude units without a gold cost (they are summons)
+                # Should equal: Imp, Chaos Hound, Undead Dragon, Cerberus, Hydraling, Hellion, Nightcrawler, Elite Hellion, Elite Nightcrawler
+                continue
             units.append(Unit(**unit))
 
     return units

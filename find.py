@@ -1,12 +1,10 @@
 #!/usr/bin/env python3
 
 import sys
-import os
 import cv2
 import numpy as np
-import pyscreenshot
 
-import api
+from typing import List
 
 VISUALIZE = False
 
@@ -14,6 +12,7 @@ VISUALIZE = False
 class Box():
     """
     These boxes will almost always be 24x24 - the size of the icons in LTD2.
+    They represent the location and size of an object found in an image.
 
     X = Width = Left/Right.
     Y = Height = Up/Down.
@@ -26,55 +25,6 @@ class Box():
 
     def __repr__(self):
         return f"Box<({self.x_offset},{self.y_offset})>"
-
-
-def search_screenshot():
-    """
-    Takes a screenshot, and searches it for any instances of LTD2 units.
-    The positions of each unit are logged
-    """
-    # Take screenshot, save it, and load it into cv2
-    screenshot = pyscreenshot.grab()
-
-    # TODO - Is saving it really the only way to covert this? Disk is slow!!!
-    # Worst case, use ramdisk, I guess?
-    screenshot.save("screenshot.png")
-
-    original_image = cv2.imread("screenshot.png")
-    haystack = simplify_image(original_image)
-
-    # Fetch data for all units using API
-    units = api.get_all_units()
-
-    unit_locations = {}
-
-    for unit in units:
-        if not os.path.isfile(unit.iconPath):
-            print(f"Can't open file {unit.iconPath}.")
-            continue
-        print(unit)
-
-        needle = simplify_image(cv2.imread(unit.iconPath))
-
-        matches = find(needle, haystack)
-
-        if matches:
-            unit_locations[unit] = matches
-
-        # Draw rectangle around each match
-        # for match in matches:
-        #     cv2.rectangle(
-        #         original_image,
-        #         (match.x_offset, match.y_offset),
-        #         (match.x_offset + match.x_size, match.y_offset + match.y_size),
-        #         (0, 0, 255),
-        #         2,
-        #     )
-
-    cv2.imshow("SEARCH COMPLETE", original_image)
-    cv2.waitKey(100000)
-
-    return unit_locations
 
 
 def simplify_image(image):
@@ -95,7 +45,7 @@ def simplify_image(image):
 
 # Loosely based off the code from:
 # https://www.pyimagesearch.com/2015/01/26/multi-scale-template-matching-using-python-opencv/
-def find(needle, haystack, threshold=0.6):
+def find(needle, haystack, threshold=0.6) -> List[Box]:
     matches = []
     (tH, tW) = needle.shape[:2]
 
@@ -140,4 +90,4 @@ if __name__ == "__main__":
     if (len(sys.argv) > 1 and sys.argv[1] in ("-h", "--help")):
         print("This program find instances of LTD2 units on the users' screen.")
         exit(0)
-    print(search_screenshot())
+    listen()
