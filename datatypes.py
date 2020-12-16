@@ -5,6 +5,9 @@ from typing import List
 
 @dataclass
 class Ability():
+    """
+    API Class for unit abilities.
+    """
     id: str
     name: str
     description: str
@@ -25,6 +28,9 @@ class Ability():
 
 @dataclass
 class Unit():
+    """
+    API Class for units.
+    """
     id: str
     name: str
     legion: str
@@ -55,3 +61,21 @@ class Unit():
 
     def __hash__(self):
         return hash(self.id)
+
+
+class LocationBox():
+    """
+    These boxes will usually be 24x24 - the size of the icons in LTD2.
+    They represent the location and size of an object found in an image.
+
+    X = Width = Left/Right.
+    Y = Height = Up/Down.
+    """
+    def __init__(self, x_offset, y_offset, x_size, y_size):
+        self.x_offset = x_offset
+        self.y_offset = y_offset
+        self.x_size = x_size
+        self.y_size = y_size
+
+    def __repr__(self):
+        return f"Box<({self.x_offset},{self.y_offset})>"

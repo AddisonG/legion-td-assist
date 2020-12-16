@@ -1,13 +1,26 @@
 #!/usr/bin/env python3
 
 import requests
+import logging
 import json
-from api_types import Unit
+
+from datatypes import Unit
 
 def get_all_units():
     """
-    Get all LTD2 Units that can be placed by a player, or summoned by a unit
-    that a player owns.
+    Get all LTD2 Units that can be placed by a player.
+
+    Should exclude units without a gold cost, as they are summoned units.
+    Summoned units include:
+      - Imp
+      - Chaos Hound
+      - Undead Dragon
+      - Cerberus
+      - Hydraling
+      - Hellion
+      - Nightcrawler
+      - Elite Hellion
+      - Elite Nightcrawler
     """
     with open("queries/get_units_by_legion", "r") as query_file:
         query = query_file.read()
@@ -25,13 +38,13 @@ def get_all_units():
         # "Mercenary",
     ]
 
+    logging.info("Loading units from API.")
+
     units = []
     for legion in legions:
         data = query_api(query.format(legion))
         for unit in data["data"]["filteredUnits"]["units"]:
             if unit["goldCost"] is None:
-                # Exclude units without a gold cost (they are summons)
-                # Should equal: Imp, Chaos Hound, Undead Dragon, Cerberus, Hydraling, Hellion, Nightcrawler, Elite Hellion, Elite Nightcrawler
                 continue
             units.append(Unit(**unit))
 
@@ -60,16 +73,11 @@ def query_api(query, debug=False):
     }
 
     response = requests.post("https://api.legiontd2.com/", json=body, headers=headers)
-    if debug:
-        print("DEBUG REQUEST:")
-        print(response.request.body)
-        print("DEBUG RESPONSE:")
-        print(response.text)
-    return json.loads(response.text)
 
-    # Make an auto-object that allows obj.attr notation
-    # from types import SimpleNamespace
-    # return json.loads(response.text, object_hook=lambda d: SimpleNamespace(**d))
+    logging.debug(f"API Request:\n{response.request.body}")
+    logging.debug(f"API Response:\n{response.text}")
+
+    return json.loads(response.text)
 
 
 if __name__ == "__main__":
