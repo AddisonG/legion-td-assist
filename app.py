@@ -42,16 +42,16 @@ def application():
             async_result = pool.apply_async(search_image_for_unit, (simple, unit))
             async_results.append(async_result)
 
-        matches = {}
+        unit_locations = {}
         for unit, async_result in zip(units, async_results):
             print("Resolved thread.")
             result = async_result.get()
             if len(result) > 0:
-                matches[unit] = result
+                unit_locations[unit] = result
 
         # Debug only
-        # show_matches(original, matches)
-        print(matches)
+        # show_matches(original, unit_locations)
+        print(unit_locations)
 
         # Don't actually loop (still testing!)
         break
@@ -76,18 +76,19 @@ def take_screenshot():
     return original_image, simple_image
 
 
-def show_matches(image, matches):
+def show_matches(image, unit_locations):
     """
     Display the provided image, with a rectange drawn around each match.
     """
-    for match in matches:
-        cv2.rectangle(
-            image,
-            (match.x_offset, match.y_offset),
-            (match.x_offset + match.x_size, match.y_offset + match.y_size),
-            (0, 0, 255),
-            2,
-        )
+    for locations in unit_locations.values():
+        for box in locations:
+            cv2.rectangle(
+                image,
+                (box.x_offset, box.y_offset),
+                (box.x_offset + box.x_size, box.y_offset + box.y_size),
+                (0, 0, 255),
+                2,
+            )
 
     cv2.imshow("Matches", image)
     cv2.waitKey(10000)
