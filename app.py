@@ -11,6 +11,7 @@ from multiprocessing.pool import ThreadPool
 from typing import List
 
 from find import simplify_image, find, LocationBox
+import logic
 import api
 
 
@@ -30,10 +31,9 @@ def application():
     parsed to find all unit data. Based on the information in the screenshot,
     the program will make suggestions on what to do.
     """
-    # Load all units
+    # Load all the units data from the API
     units = api.get_all_units()
 
-    # Wait for tab to be pressed
     with ThreadPool(processes=6) as pool:
         while True:
             logging.info("================================")
@@ -45,11 +45,10 @@ def application():
             # Take a screenshot
             original, simple = take_screenshot()
 
-            # Make a thread for each unit - search for each one
+            # Make a thread to search for each unit within the image
             async_results = []
             for unit in units:
-                async_result = pool.apply_async(
-                    search_image_for_unit, (simple, unit))
+                async_result = pool.apply_async(search_image_for_unit, (simple, unit))
                 async_results.append(async_result)
 
             unit_locations = {}
@@ -58,7 +57,7 @@ def application():
                 if len(result) > 0:
                     unit_locations[unit] = result
 
-            print(f"Duration: {time.time() - start_time}")
+            logging.debug(f"Time taken to parse screenshot: {round(time.time() - start_time, 2)} seconds")
 
             if len(unit_locations) == 0:
                 logging.warning("No units found on screen.")
@@ -67,11 +66,9 @@ def application():
             # Debug only
             # visualise_matches(original, unit_locations)
 
-            #
-            print(unit_locations)
+            print(logic.split_into_lanes(unit_locations))
 
-            # Don't actually loop (still testing!)
-            # break
+            # Make predictions
 
 
 def take_screenshot():
